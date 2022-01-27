@@ -1,18 +1,10 @@
 ## Установка и запуск
 
-```bash
-# install packages
-$ yarn
-
-# development
-$ yarn start
-
-# watch mode
-$ yarn start:dev
-
-# production mode
-$ yarn start:prod
-```
+1. Убедиться в том, что поднят Redis сервер на порте `6379` - нужен для работы с WebSocket
+2. `$ yarn` - для установки зависимостей
+3. Запуск:
+   - `$ yarn start:dev` - для запуска в dev-режиме
+   - `$ yarn start:prod` - для запуска в prod-режиме
 
 ## Что можно улучшить / изменить:
 
