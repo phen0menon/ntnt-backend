@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, UpdateResult } from 'typeorm';
 import { Queue } from 'bull';
-import { CreateOperationDto, FinishOperationDto } from './dto/create-operation.dto';
+import { CreateOperationDto } from './dto/create-operation.dto';
 import { Operation, OperationStatus } from './entities/operation.entity';
 import { UtilService } from 'src/common';
 
@@ -28,8 +28,8 @@ export class OperationService {
     return this.repository.find();
   }
 
-  finishOperation(finishOperationDto: FinishOperationDto): Promise<UpdateResult> {
-    return this.repository.update(+finishOperationDto.id, {
+  finishOperation(payload: { id: number }): Promise<UpdateResult> {
+    return this.repository.update(+payload.id, {
       status: this.util.getRandomElement([OperationStatus.DONE, OperationStatus.FAILED]),
     });
   }
